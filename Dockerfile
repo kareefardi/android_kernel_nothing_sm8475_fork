@@ -1,3 +1,3 @@
-FROM debian:stable
+FROM ubuntu
 
-RUN sudo apt update && sudo apt install -y make ccache clang flex bison llvm lld libssl-dev bc
+RUN apt update && apt install -y make ccache clang flex bison llvm lld libssl-dev bc lz4 fakeroot cpio
