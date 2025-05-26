@@ -1,4 +1,14 @@
 #!/bin/bash
+
+export PATH=$PATH:"$(pwd)/mkbootimg"
+if [ ! -d mkbootimg ]; then
+    echo "mkbootimg not found, please clone it from https://android.googlesource.com/platform/system/tools/mkbootimg"
+    git clone https://android.googlesource.com/platform/system/tools/mkbootimg
+else
+    echo "mkbootimg found, updating..."
+    (cd mkbootimg && git pull)
+fi
+
 export KERNELDIR=`readlink -f .`
 export RAMFS_SOURCE=`readlink -f $KERNELDIR/ramdisk`
 export PARTITION_SIZE=134217728
@@ -19,7 +29,7 @@ if [[ "${1}" == "skip" ]] ; then
 else
 	echo "Compiling kernel"
 	cp defconfig .config
-	make "$@" || exit 1
+	make -j 8 "$@" || exit 1
 fi
 
 echo "Building new ramdisk"
