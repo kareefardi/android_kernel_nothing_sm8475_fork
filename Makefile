@@ -393,12 +393,9 @@ include $(srctree)/scripts/subarch.include
 # Default value for CROSS_COMPILE is not to prefix executables
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
 override ARCH		:= arm64
-override CROSS_COMPILE	:= /home/arter97/arm64-gcc/bin/aarch64-elf-
-override CROSS_COMPILE_ARM32	:= /home/arter97/arm32-gcc/bin/arm-eabi-
 override LLVM := 1
 override LLVM_IAS := 1
 override CLANG_TRIPLE := aarch64-linux-gnu
-override LLVM_PATH := /home/arter97/android/nathan/llvm-20.1.4-x86_64/bin/
 
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
