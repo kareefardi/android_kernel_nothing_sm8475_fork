@@ -2,7 +2,7 @@
 
 export PATH=$PATH:"$(pwd)/mkbootimg"
 if [ ! -d mkbootimg ]; then
-    echo "mkbootimg not found, please clone it from https://android.googlesource.com/platform/system/tools/mkbootimg"
+    echo "mkbootimg not found, cloning..."
     git clone https://android.googlesource.com/platform/system/tools/mkbootimg
 else
     echo "mkbootimg found, updating..."
