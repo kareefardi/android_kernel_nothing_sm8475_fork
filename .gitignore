@@ -10,7 +10,6 @@
 #
 # Normal rules (sorted alphabetically)
 #
-.*
 *.a
 *.asn1.[ch]
 *.bin
@@ -50,6 +49,11 @@
 Module.symvers
 modules.builtin
 modules.order
+.thinlto-cache/
+.*.cmd
+.*.d
+.config*
+.version
 
 #
 # Top-level generic files
