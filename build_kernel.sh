@@ -1,13 +1,7 @@
 #!/bin/bash
 
 export PATH=$PATH:"$(pwd)/mkbootimg"
-if [ ! -d mkbootimg ]; then
-    echo "mkbootimg not found, cloning..."
-    git clone https://android.googlesource.com/platform/system/tools/mkbootimg
-else
-    echo "mkbootimg found, updating..."
-    (cd mkbootimg && git pull)
-fi
+(cd mkbootimg && git pull)
 
 export KERNELDIR=`readlink -f .`
 export RAMFS_SOURCE=`readlink -f $KERNELDIR/ramdisk`
