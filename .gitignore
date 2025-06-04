@@ -54,6 +54,7 @@ modules.order
 .*.d
 .config*
 .version
+.tmp_*
 
 #
 # Top-level generic files
