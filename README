@@ -1,18 +1,20 @@
-Linux kernel
-============
+# Nothing Phone (2) KSU susfs kernel
+This kernel is a [fork of arter97 pong kernel](https://github.com/arter97/android_kernel_nothing_sm8475) with added support for KernelSU Next and susfs.
 
-There are several guides for kernel developers and users. These guides can
-be rendered in a number of formats, like HTML and PDF. Please read
-Documentation/admin-guide/README.rst first.
+## How to download
+Go to [Actions section](https://github.com/ThePhaseless/android_kernel_nothing_sm8475/actions) and select the latest successfull build. The kernel will be in the artifacts section called `boot.img`
 
-In order to build the documentation, use ``make htmldocs`` or
-``make pdfdocs``.  The formatted documentation can also be read online at:
+## Integrity pass
+I was able to pass strong integrity with these modules:
+- [susfs for kernelsu](https://github.com/sidex15/susfs4ksu-module)
+- [TrickyStore](https://github.com/5ec1cff/TrickyStore) with [this addon](https://github.com/KOWX712/Tricky-Addon-Update-Target-List)
+- [VB Meta Fixer](https://github.com/reveny/Android-VBMeta-Fixer)
 
-    https://www.kernel.org/doc/html/latest/
-
-There are various text files in the Documentation/ subdirectory,
-several of them using the Restructured Text markup notation.
-
-Please read the Documentation/process/changes.rst file, as it contains the
-requirements for building and running the kernel, and information about
-the problems which may result by upgrading your kernel.
+With these configuration steps:
+- Install KSU Next app and all modules
+- Reboot your phone
+- Go to the app and click on Logs icon for Tricky Addon
+- In menu select in this order: Select All, Deselct Unnecessary, **Set Valud Keybox**.
+- Click Save
+- Reboot your phone
+- Done
