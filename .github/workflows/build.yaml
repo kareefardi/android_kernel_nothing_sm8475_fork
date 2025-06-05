@@ -1,0 +1,28 @@
+name: Build and Upload boot.img
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: apt update && apt install -y make ccache clang flex bison llvm lld libssl-dev bc lz4 fakeroot cpio patch
+
+    - name: Build kernel
+      run: ./build_kernel.sh
+
+    - name: Upload boot.img artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: boot-image
+        path: boot.img # This path is relative to the root of your GitHub Actions workspace.
+                      # Ensure your Docker command places boot.img here.
