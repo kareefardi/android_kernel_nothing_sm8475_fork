@@ -1,1 +1,1 @@
-susfs4ksu/kernel_patches/fs/sus_su.c
+../susfs4ksu/kernel_patches/fs/sus_su.c
