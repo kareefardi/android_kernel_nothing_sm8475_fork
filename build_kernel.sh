@@ -1,7 +1,9 @@
 #!/bin/bash
 
 export PATH=$PATH:"$(pwd)/mkbootimg"
-(cd mkbootimg && git pull)
+
+# Change minimal version from 6.4 to 5.10 in file kernel/selinux/rules.c
+sed -ie 's/KERNEL_VERSION(6, 4, 0)/KERNEL_VERSION(5, 10, 0)' kernel/selinux/rules.c
 
 export KERNELDIR=`readlink -f .`
 export RAMFS_SOURCE=`readlink -f $KERNELDIR/ramdisk`
