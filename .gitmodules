@@ -9,3 +9,6 @@
 	path = susfs4ksu
 	url = https://gitlab.com/simonpunk/susfs4ksu
 	branch = gki-android13-5.10
+[submodule "kernel_patches"]
+	path = kernel_patches
+	url = https://github.com/WildKernels/kernel_patches
