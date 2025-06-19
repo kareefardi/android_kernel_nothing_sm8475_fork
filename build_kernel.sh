@@ -22,6 +22,7 @@ cd $KERNELDIR
 
 # Get ammount of CPU threads
 THREADS=$(nproc --all)
+echo "Using $THREADS threads for compilation"
 
 if [[ "${1}" == "skip" ]] ; then
 	echo "Skipping Compilation"
