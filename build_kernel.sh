@@ -20,12 +20,15 @@ RAMFS_TMP="/tmp/arter97-pong-ramdisk"
 echo "ramfs_tmp = $RAMFS_TMP"
 cd $KERNELDIR
 
+# Get ammount of CPU threads
+THREADS=$(nproc --all)
+
 if [[ "${1}" == "skip" ]] ; then
 	echo "Skipping Compilation"
 else
 	echo "Compiling kernel"
 	cp defconfig .config
-	make -j 8 "$@" || exit 1
+	make -j${THREADS} "$@" || exit 1
 fi
 
 echo "Building new ramdisk"
