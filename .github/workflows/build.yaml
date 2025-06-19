@@ -6,6 +6,10 @@ on:
       - master
   workflow_dispatch: # Allows manual trigger
 
+concurrency:
+  group: "build-and-upload"
+  cancel-in-progress: true # Cancel any in-progress runs of this workflow
+
 jobs:
   build-and-upload:
     runs-on: ubuntu-latest
