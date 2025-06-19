@@ -11,21 +11,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      with:
-        submodules: true
-        fetch-depth: 0
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        with:
+          submodules: true
+          fetch-depth: 0
+        uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: sudo apt update && sudo apt install -y make ccache clang flex bison llvm lld libssl-dev bc lz4 fakeroot cpio patch
+      - name: Install dependencies
+        run: sudo apt update && sudo apt install -y make ccache clang flex bison llvm lld libssl-dev bc lz4 fakeroot cpio patch
 
-    - name: Build kernel
-      run: ./build_kernel.sh
+      - name: Patch Kernel
+        run: ./patch_kernel.sh
 
-    - name: Upload boot.img artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: boot-image
-        path: boot.img # This path is relative to the root of your GitHub Actions workspace.
-                      # Ensure your Docker command places boot.img here.
+      - name: Build kernel
+        run: ./build_kernel.sh
+
+      - name: Upload boot.img artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: boot-image
+          path:
+            boot.img # This path is relative to the root of your GitHub Actions workspace.
+            # Ensure your Docker command places boot.img here.
