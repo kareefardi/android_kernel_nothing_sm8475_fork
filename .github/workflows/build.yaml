@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: sudo apt update && sudo apt install -y make ccache clang flex bison llvm lld libssl-dev bc lz4 fakeroot cpio patch
+        run: sudo apt update && sudo apt install -y make ccache clang flex bison llvm lld libssl-dev bc lz4 fakeroot cpio patch pigz
 
       - name: Patch Kernel
         run: ./patch_kernel.sh
