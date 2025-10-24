@@ -37,9 +37,9 @@
 
 
 # Copy SUSFS patches
-cp ./susfs4ksu/kernel_patches/50_add_susfs_in_gki-android13-5.1.patch ./common/
-cp ./susfs4ksu/kernel_patches/fs/* ./common/fs/
-cp ./susfs4ksu/kernel_patches/include/linux/* ./common/include/linux/
+cp ./susfs4ksu/kernel_patches/50_add_susfs_in_gki-android13-5.10.patch 
+cp ./susfs4ksu/kernel_patches/fs/* ./fs/
+cp ./susfs4ksu/kernel_patches/include/linux/* ./include/linux/
 
 cd common
-patch -p1 --fuzz=3 < 50_add_susfs_in_gki-android13-5.1.patch || true
+patch -p1 --fuzz=3 < 50_add_susfs_in_gki-android13-5.10.patch || true
