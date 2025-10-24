@@ -3,7 +3,6 @@ name: Build and Upload boot.img
 on:
   push:
     branches:
-      - master
   workflow_dispatch: # Allows manual trigger
 
 concurrency:
