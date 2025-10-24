@@ -19,7 +19,7 @@ if [[ "${1}" == "skip" ]] ; then
 else
 	echo "Compiling kernel"
 	cp defconfig .config
-	make "$@" || exit 1
+	make "$@" -j$(nproc --all) || exit 1
 fi
 
 echo "Building new ramdisk"
@@ -45,24 +45,24 @@ find . | fakeroot cpio -H newc -o | lz4 -l > $RAMFS_TMP.cpio.lz4
 ls -lh $RAMFS_TMP.cpio.lz4
 cd $KERNELDIR
 
+OUTPUT_NAME="arter97-kernel-$(cat version)-sukisu-susfs-boot.img"
+
 echo "Making new boot image"
-mkbootimg.py \
+./mkbootimg.py \
     --kernel $KERNELDIR/arch/arm64/boot/Image.gz \
     --ramdisk $RAMFS_TMP.cpio.lz4 \
     --pagesize 4096 \
     --os_version     $OS \
     --os_patch_level $SPL \
     --header_version 4 \
-    -o $KERNELDIR/boot.img
+    -o $KERNELDIR/$OUTPUT_NAME
 
-GENERATED_SIZE=$(stat -c %s boot.img)
+GENERATED_SIZE=$(stat -c %s $OUTPUT_NAME)
 if [[ $GENERATED_SIZE -gt $PARTITION_SIZE ]]; then
-	echo "boot.img size larger than partition size!" 1>&2
+	echo "$OUTPUT_NAME size larger than partition size!" 1>&2
 	exit 1
 fi
 
-ln -f boot.img arter97-kernel-$(cat version)-boot.img
-
 echo "done"
-ls -al boot.img
+ls -al $OUTPUT_NAME
 echo ""
