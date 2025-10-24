@@ -4,3 +4,6 @@
 [submodule "KernelSU"]
 	path = KernelSU
 	url = https://github.com/SukiSU-Ultra/SukiSU-Ultra
+[submodule "susfs4ksu"]
+	path = susfs4ksu
+	url = https://github.com/ShirkNeko/susfs4ksu.git
