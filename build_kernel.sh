@@ -4,7 +4,7 @@ set -e
 export PATH=$PATH:"$(pwd)/mkbootimg"
 
 # Change minimal version from 6.4 to 5.10 in file kernel/selinux/rules.c
-sed -ie 's/KERNEL_VERSION(6, 4, 0)/KERNEL_VERSION(5, 10, 0)/' KernelSU-Next/kernel/selinux/rules.c
+sed -ie 's/KERNEL_VERSION(6, 4, 0)/KERNEL_VERSION(5, 10, 0)/' KernelSU/kernel/selinux/rules.c
 export KERNELDIR=`readlink -f .`
 export RAMFS_SOURCE=`readlink -f $KERNELDIR/ramdisk`
 export PARTITION_SIZE=134217728
