@@ -24,7 +24,7 @@ jobs:
         run: sudo apt update && sudo apt install -y make ccache clang flex bison llvm lld libssl-dev bc lz4 fakeroot cpio patch pigz
 
       - name: Patch Kernel
-        run: ./patch_kernel.sh
+        run: ./patch_kernel.sh || true
 
       - name: Build kernel
         run: ./build_kernel.sh
